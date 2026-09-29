@@ -41,4 +41,39 @@ JWT_EXPIRES_IN=7d
 - `AuthContext` stores the token in `localStorage`, restores the session via
   `/auth/me`, and `api.js` attaches the token to every request.
 - Pages: Login, Register, Reviews (list + course summary lookup, edit/delete
-  on your own reviews), ReviewForm (create/edit, behind `ProtectedRoute`).
+  on your own reviews). ReviewForm is left for you — see below.
+
+## Your task — the Write Review page
+
+Everything above is already working. Your job is the frontend of writing a
+review: `client/src/pages/ReviewForm.jsx`. It is already routed at
+`/reviews/new` and `/reviews/:id`, both behind `ProtectedRoute`, and the
+"Write Review" nav link and the "Edit" buttons already point to it.
+
+### TODO 1 — the form
+Render inputs bound to the `form` state:
+- `courseCode` — text input (e.g. `CS101`)
+- `rating` — select with options 1–5 (store it as a **number**, not a string)
+- `comment` — textarea (optional)
+
+Implement `onChange` so every input updates `form`.
+
+### TODO 2 — writing a review
+In `onSubmit`, send `POST /api/reviews` with `{ courseCode, rating, comment }`
+using the `api` instance from `client/src/api.js` (it already attaches your
+token). On success, navigate back to `/reviews`. On failure, show the
+server's `message` in the `error` box — try it: an invalid rating returns
+`400`, reviewing the same course twice returns `409`.
+
+Do **not** send `reviewedBy` — the server takes the reviewer from your token
+and rejects the request if you send it.
+
+### TODO 3 — editing a review
+When the URL has an `id`, load the review with `GET /api/reviews/:id` and fill
+the form with its `courseCode`, `rating` and `comment`. On submit, send
+`PATCH /api/reviews/:id` instead of `POST`. Editing someone else's review
+returns `403` — show that message too.
+
+You're expected to use AI tools while building this. But you should be able
+to explain, for any line in your component, *why* it's there and what
+happens if you delete it. We will ask.
