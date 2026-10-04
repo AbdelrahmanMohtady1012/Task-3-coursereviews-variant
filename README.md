@@ -61,6 +61,10 @@ review: `client/src/pages/ReviewForm.jsx`. It is already routed at
 `/reviews/new` and `/reviews/:id`, both behind `ProtectedRoute`, and the
 "Write Review" nav link and the "Edit" buttons already point to it.
 
+This is roughly what the finished page should look like (filled in with example values):
+
+![Finished page](docs/write-review.png)
+
 ### TODO 1 — the form
 Render inputs bound to the `form` state:
 - `courseCode` — text input (e.g. `CS101`)
