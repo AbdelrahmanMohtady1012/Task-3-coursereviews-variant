@@ -1,8 +1,7 @@
-# Task 2 (Variant): Course Review Board — with Authentication
+# Task 3 (Variant): Course Review Board — with Authentication
 
-Task 1's Course Review Board API (`Task_1_variant_coursereviews_solution`)
-extended with the authentication from `Task_2_solution`: JWT login/register
-on the server and a React client with a login flow.
+Task 1's Course Review Board API with JWT login/register on the server and a
+React client with a login flow.
 
 ## Running it
 
