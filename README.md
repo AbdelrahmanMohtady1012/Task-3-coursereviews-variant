@@ -19,6 +19,18 @@ JWT_SECRET=change-me
 JWT_EXPIRES_IN=7d
 ```
 
+`JWT_SECRET` is the key the server signs and verifies login tokens with —
+anyone who knows it can forge a token for any user, so replace `change-me`
+with a long random value. Generate one with:
+
+```
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+Paste the output after `JWT_SECRET=` and restart the server. Changing the
+secret logs everyone out, because tokens signed with the old one stop being
+valid.
+
 ## What was added on top of Task 1
 
 ### Server
